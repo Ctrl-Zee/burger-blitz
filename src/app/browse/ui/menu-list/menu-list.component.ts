@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-browse',
-  templateUrl: './browse.page.html',
-  styleUrls: ['./browse.page.scss'],
+  selector: 'app-menu-list',
+  templateUrl: './menu-list.component.html',
+  styleUrls: ['./menu-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BrowsePage implements OnInit {
+export class MenuListComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
