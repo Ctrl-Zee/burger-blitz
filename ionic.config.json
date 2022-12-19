@@ -1,0 +1,7 @@
+{
+  "name": "burger-blitz",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
