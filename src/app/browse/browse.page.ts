@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MenuService } from '../core/services/menu.service';
 
 @Component({
   selector: 'app-browse',
@@ -7,7 +8,11 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrowsePage implements OnInit {
-  constructor() {}
+  items$ = this.menuService.burgers$;
+  constructor(private menuService: MenuService) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    // this.test = await this.menuService.getBurgerItems();
+    // console.log(this.test);
+  }
 }
