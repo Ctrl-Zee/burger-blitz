@@ -1,18 +1,23 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { combineLatest, map } from 'rxjs';
 import { MenuService } from '../core/services/menu.service';
+import { MenuStore } from './menu.store';
 
 @Component({
   selector: 'app-browse',
   templateUrl: './browse.page.html',
   styleUrls: ['./browse.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [MenuStore],
 })
 export class BrowsePage implements OnInit {
-  items$ = this.menuService.burgers$;
-  constructor(private menuService: MenuService) {}
+  vm$ = combineLatest([this.store.menuItems$]).pipe(
+    map(([menuItems]) => ({ menuItems }))
+  );
 
-  async ngOnInit() {
-    // this.test = await this.menuService.getBurgerItems();
-    // console.log(this.test);
+  constructor(public store: MenuStore) {}
+
+  ngOnInit() {
+    this.store.loadMenu();
   }
 }

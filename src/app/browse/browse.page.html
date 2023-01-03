@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <ng-container *ngIf="items$ | async as items">
-    <app-menu-list [items]="items"></app-menu-list>
+  <ng-container *ngIf="vm$ | async as vm">
+    <app-menu-list [items]="vm.menuItems"></app-menu-list>
   </ng-container>
 </ion-content>
