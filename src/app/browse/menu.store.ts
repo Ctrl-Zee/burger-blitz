@@ -15,7 +15,7 @@ export class MenuStore extends ComponentStore<MenuState> {
   loadMenu = this.effect(($) =>
     $.pipe(
       switchMap(() =>
-        this.menuService.getBurgerItems().pipe(
+        this.menuService.getMenu().pipe(
           tapResponse(
             (menu) => this.patchState({ menu }),
             (err) => console.log(err)
