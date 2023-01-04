@@ -7,11 +7,9 @@ import { ApiParameter, ApiService } from './api.service';
   providedIn: 'root',
 })
 export class MenuService {
-  burgers$ = this.getBurgerItems();
-
   constructor(private apiService: ApiService) {}
 
-  getBurgerItems(): Observable<MenuItem[]> {
+  getMenu(): Observable<MenuItem[]> {
     const params: ApiParameter[] = [{ key: 'select', value: '*' }];
     return this.apiService.doGet('menuitems', params);
   }
