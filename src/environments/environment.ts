@@ -3,11 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  firebase: {
+    projectId: 'burger-blitz',
+    appId: '1:351957730275:web:5993b6c1b336f4898516d6',
+    storageBucket: 'burger-blitz.appspot.com',
+    apiKey: 'AIzaSyBKexBk-PwoCuTTY7caRH-LZDMmLDs_O4A',
+    authDomain: 'burger-blitz.firebaseapp.com',
+    messagingSenderId: '351957730275',
+    measurementId: 'G-8442PLHZKG',
+  },
   production: false,
-  supabaseUrl: 'https://zqqnpemmnfzzzvxclmce.supabase.co',
-  supabaseKey:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpxcW5wZW1tbmZ6enp2eGNsbWNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzE1NDY4ODMsImV4cCI6MTk4NzEyMjg4M30.c0ptceUO0XpW89Sq4JwiAcoqq2fS2A8suAsYK4h1iMA',
-  apiRoot: 'https://zqqnpemmnfzzzvxclmce.supabase.co/rest/v1/',
 };
 
 /*
