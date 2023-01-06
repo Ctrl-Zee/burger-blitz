@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { combineLatest, map } from 'rxjs';
-import { MenuService } from '../core/services/menu.service';
-import { MenuStore } from './menu.store';
+import { MenuStore } from '../../menu.store';
 
 @Component({
   selector: 'app-browse',

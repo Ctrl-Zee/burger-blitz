@@ -1,0 +1,12 @@
+ion-item,
+ion-input {
+  --background: var(--ion-color-medium);
+}
+
+ion-input {
+  color: var(--ion-color-primary);
+}
+
+ion-item {
+  --padding-bottom: 2rem;
+}

@@ -1,9 +1,3 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Burger Blitz</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <ng-container *ngIf="vm$ | async as vm">
     <app-menu-list [items]="vm.menuItems"></app-menu-list>

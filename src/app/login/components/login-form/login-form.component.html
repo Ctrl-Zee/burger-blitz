@@ -1,0 +1,19 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <ion-item>
+    <ion-icon color="light" slot="end" name="mail-outline"></ion-icon>
+    <ion-input
+      formControlName="email"
+      type="email"
+      placeholder="email"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon color="light" slot="end" name="lock-closed-outline"></ion-icon>
+    <ion-input
+      formControlName="password"
+      type="password"
+      placeholder="password"
+    ></ion-input>
+  </ion-item>
+  <ion-button type="submit" color="primary" expand="full"> Login </ion-button>
+</form>

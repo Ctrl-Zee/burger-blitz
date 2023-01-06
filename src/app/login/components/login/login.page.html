@@ -1,0 +1,31 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <ion-content>
+    <div class="container">
+      <img class="hero" src="assets/images/burger-blitz-logo.png" />
+      <div class="title">Burger Blitz</div>
+      <app-login-form
+        (login)="store.login($event)"
+        [loginStatus]="vm.status"
+      ></app-login-form>
+      <ion-modal
+        [isOpen]="vm.createModalIsOpen"
+        [presentingElement]="routerOutlet.nativeEl"
+        [canDismiss]="true"
+        (ionModalDidDismiss)="store.setCreateModalOpen(false)"
+      >
+        <ng-template>
+          <app-create-account-modal></app-create-account-modal>
+        </ng-template>
+      </ion-modal>
+    </div>
+  </ion-content>
+  <ion-footer>
+    <ion-button
+      expand="full"
+      data-test="open-create-button"
+      (click)="store.setCreateModalOpen(true)"
+    >
+      Create Account
+    </ion-button>
+  </ion-footer>
+</ng-container>
