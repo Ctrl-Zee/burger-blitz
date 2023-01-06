@@ -11,7 +11,10 @@ import { LoginStore } from '../../login.store';
   providers: [LoginStore],
 })
 export class LoginPage {
-  vm$ = combineLatest([this.store.status$, this.store.createModalIsOpen$]).pipe(
+  vm$ = combineLatest([
+    this.store.loginStatus$,
+    this.store.createModalIsOpen$,
+  ]).pipe(
     map(([status, createModalIsOpen]) => ({ status, createModalIsOpen }))
   );
 

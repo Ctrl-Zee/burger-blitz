@@ -5,8 +5,9 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  UserCredential,
 } from '@angular/fire/auth';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { Credentials } from 'src/app/shared/models/credentials';
 
 @Injectable({
@@ -17,7 +18,7 @@ export class AuthService {
 
   constructor(private auth: Auth) {}
 
-  login(credentials: Credentials) {
+  login(credentials: Credentials): Observable<UserCredential> {
     return from(
       signInWithEmailAndPassword(
         this.auth,
@@ -31,11 +32,13 @@ export class AuthService {
     return from(signOut(this.auth));
   }
 
-  createAccount(credentials: Credentials) {
-    return createUserWithEmailAndPassword(
-      this.auth,
-      credentials.email,
-      credentials.password
+  createAccount(credentials: Credentials): Observable<UserCredential> {
+    return from(
+      createUserWithEmailAndPassword(
+        this.auth,
+        credentials.email,
+        credentials.password
+      )
     );
   }
 }

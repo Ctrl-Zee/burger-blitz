@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Credentials } from 'src/app/shared/models/credentials';
-import { LoginStatus } from '../../login.store';
+import { LoginStatus } from 'src/app/shared/models/types';
 
 @Component({
   selector: 'app-login-form',

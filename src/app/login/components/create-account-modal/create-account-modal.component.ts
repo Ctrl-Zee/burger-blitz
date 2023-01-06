@@ -1,10 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
-import { BehaviorSubject } from 'rxjs';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { Credentials } from 'src/app/shared/models/credentials';
-
-export type CreateStatus = 'pending' | 'creating' | 'success' | 'error';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { combineLatest, map } from 'rxjs';
+import { LoginStore } from '../../login.store';
 
 @Component({
   selector: 'app-create-account-modal',
@@ -13,23 +10,8 @@ export type CreateStatus = 'pending' | 'creating' | 'success' | 'error';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateAccountModalComponent {
-  createStatus$ = new BehaviorSubject<CreateStatus>('pending'); // TODO: refactor to use component store
-
-  constructor(
-    protected authService: AuthService,
-    protected modalCtrl: ModalController,
-    private navCtrl: NavController
-  ) {}
-
-  async createAccount(credentials: Credentials) {
-    this.createStatus$.next('creating');
-    try {
-      await this.authService.createAccount(credentials);
-      this.createStatus$.next('success');
-      this.modalCtrl.dismiss();
-      this.navCtrl.navigateRoot('/home');
-    } catch (err) {
-      this.createStatus$.next('error');
-    }
-  }
+  vm$ = combineLatest([this.store.createStatus$]).pipe(
+    map(([status]) => ({ status }))
+  );
+  constructor(public store: LoginStore, protected modalCtrl: ModalController) {}
 }

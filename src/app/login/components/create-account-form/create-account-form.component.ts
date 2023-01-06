@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { Credentials } from 'src/app/shared/models/credentials';
-import { CreateStatus } from '../create-account-modal/create-account-modal.component';
+import { CreateStatus } from 'src/app/shared/models/types';
 
 @Component({
   selector: 'app-create-account-form',

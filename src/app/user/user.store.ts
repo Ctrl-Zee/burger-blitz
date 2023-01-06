@@ -4,8 +4,21 @@ import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { switchMap } from 'rxjs/operators';
 import { AuthService } from '../core/services/auth.service';
 
+interface UserState {
+  logOutModalIsOpen: boolean;
+}
+
 @Injectable()
-export class HomeStore extends ComponentStore<any> {
+export class UserStore extends ComponentStore<any> {
+  logoutModalIsOpen$ = this.select((state) => state.logOutModalIsOpen);
+
+  constructor(
+    private authService: AuthService,
+    private navCtrl: NavController
+  ) {
+    super({ logOutModalIsOpen: false });
+  }
+
   logout = this.effect(($) =>
     $.pipe(
       switchMap(() =>
@@ -19,10 +32,7 @@ export class HomeStore extends ComponentStore<any> {
     )
   );
 
-  constructor(
-    private authService: AuthService,
-    private navCtrl: NavController
-  ) {
-    super({});
+  setLogOutModalOpen(isOpen: boolean) {
+    this.patchState({ logOutModalIsOpen: isOpen });
   }
 }

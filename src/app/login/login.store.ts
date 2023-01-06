@@ -1,45 +1,72 @@
 import { Injectable } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { AuthService } from '../core/services/auth.service';
 import { Credentials } from '../shared/models/credentials';
-export type LoginStatus = 'pending' | 'authenticating' | 'success' | 'error';
+import { CreateStatus, LoginStatus } from '../shared/models/types';
+
 interface LoginState {
-  status: LoginStatus;
+  loginStatus: LoginStatus;
+  createStatus: CreateStatus;
   createModalIsOpen: boolean;
 }
+
 @Injectable()
 export class LoginStore extends ComponentStore<LoginState> {
-  status$ = this.select((state) => state.status);
+  loginStatus$ = this.select((state) => state.loginStatus);
+  createStatus$ = this.select((state) => state.createStatus);
   createModalIsOpen$ = this.select((state) => state.createModalIsOpen);
+
+  constructor(
+    private authService: AuthService,
+    private navCtrl: NavController,
+    protected modalCtrl: ModalController
+  ) {
+    super({
+      loginStatus: 'pending',
+      createStatus: 'pending',
+      createModalIsOpen: false,
+    });
+  }
 
   login = this.effect((credentials$: Observable<Credentials>) =>
     credentials$.pipe(
-      tap(() => this.patchState({ status: 'authenticating' })),
+      tap(() => this.patchState({ loginStatus: 'authenticating' })),
       switchMap((credentials) =>
         this.authService.login(credentials).pipe(
           tapResponse(
             (user) => {
-              this.patchState({ status: 'success' });
-              this.navCtrl.navigateRoot('/home');
+              this.patchState({ loginStatus: 'success' });
+              this.navCtrl.navigateRoot('/home/browse');
             },
-            (error) => this.patchState({ status: 'error' })
+            (error) => this.patchState({ loginStatus: 'error' })
           )
         )
       )
     )
   );
 
-  constructor(
-    private authService: AuthService,
-    private navCtrl: NavController
-  ) {
-    super({ status: 'pending', createModalIsOpen: false });
-  }
-
   setCreateModalOpen(isOpen: boolean) {
     this.patchState({ createModalIsOpen: isOpen });
   }
+
+  createAccount = this.effect((credential$: Observable<Credentials>) =>
+    credential$.pipe(
+      tap(() => this.patchState({ createStatus: 'creating' })),
+      switchMap((credential) =>
+        this.authService.createAccount(credential).pipe(
+          tapResponse(
+            (user) => {
+              this.patchState({ createStatus: 'success' });
+              this.modalCtrl.dismiss();
+              this.navCtrl.navigateRoot('/home/browse');
+            },
+            (error) => this.patchState({ createStatus: 'error' })
+          )
+        )
+      )
+    )
+  );
 }

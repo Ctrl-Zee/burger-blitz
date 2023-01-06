@@ -1,0 +1,37 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Account</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item button (click)="store.setLogOutModalOpen(true)">
+        <ion-label>Log Out</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-modal
+      [isOpen]="vm.logoutModalIsOpen"
+      [canDismiss]="true"
+      (ionModalDidDismiss)="store.setLogOutModalOpen(false)"
+      [initialBreakpoint]="0.20"
+    >
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Are you sure?</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <div class="button-container">
+            <ion-button (click)="logout()" color="danger"> Log Out </ion-button>
+            <ion-button (click)="closeModal()" color="light">
+              Cancel
+            </ion-button>
+          </div>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </ion-content>
+</ng-container>

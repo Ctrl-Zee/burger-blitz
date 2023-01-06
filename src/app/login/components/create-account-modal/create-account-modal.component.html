@@ -1,17 +1,18 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Create Account</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="modalCtrl.dismiss()">
-        <ion-icon name="close" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-<ion-content>
-  <app-create-account-form
-    *ngIf="createStatus$ | async as status"
-    (create)="createAccount($event)"
-    [createStatus]="status"
-  ></app-create-account-form>
-</ion-content>
+<ng-container *ngIf="vm$ | async as vm">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Create Account</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="modalCtrl.dismiss()">
+          <ion-icon name="close" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <app-create-account-form
+      (create)="store.createAccount($event)"
+      [createStatus]="vm.status"
+    ></app-create-account-form>
+  </ion-content>
+</ng-container>
