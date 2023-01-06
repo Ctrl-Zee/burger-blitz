@@ -1,19 +1,24 @@
-<ion-list>
-  <ion-list-header>
-    <ion-label>Burgers</ion-label>
-  </ion-list-header>
-  <ion-item *ngFor="let item of items">
-    <div class="menu-item">
-      <div class="info-container">
-        <div class="title">{{ item.name }}</div>
-        <div class="description">
-          {{ item.description | textEllipsis }}
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <div class="menu-item">
+        <div class="info-container">
+          <div class="title">{{ item.name }}</div>
+          <div class="description">
+            {{ item.description | textEllipsis }}
+          </div>
+          <div class="price">{{ item.price | currency }}</div>
         </div>
-        <div class="price">{{ item.price | currency }}</div>
+        <div class="image-container">
+          <img [src]="item.imageURL" alt="Burger" />
+        </div>
       </div>
-      <div class="image-container">
-        <img [src]="item.imageURL" alt="Burger" />
-      </div>
-    </div>
-  </ion-item>
-</ion-list>
+    </ion-item>
+  </ion-list>
+</ion-content>
