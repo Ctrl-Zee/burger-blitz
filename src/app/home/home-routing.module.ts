@@ -8,9 +8,9 @@ const routes: Routes = [
     component: HomePage,
     children: [
       {
-        path: 'browse',
+        path: 'menu',
         loadChildren: () =>
-          import('../browse/browse.module').then((m) => m.BrowsePageModule),
+          import('../menu/menu.module').then((m) => m.MenuPageModule),
       },
       {
         path: 'search',
@@ -38,7 +38,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/home/browse',
+    redirectTo: '/home/menu',
     pathMatch: 'full',
   },
 ];

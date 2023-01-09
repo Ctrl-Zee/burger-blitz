@@ -18,7 +18,7 @@ export class CanActivateLogin implements CanActivate {
       map((user) => (user ? false : true)),
       tap((canActivate) => {
         if (!canActivate) {
-          this.navCtrl.navigateForward('/home/browse');
+          this.navCtrl.navigateForward('/home/menu');
         }
       })
     );

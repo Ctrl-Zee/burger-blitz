@@ -1,23 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
-import { BrowsePageRoutingModule } from './browse-routing.module';
 
+import { IonicModule } from '@ionic/angular';
+
+import { MenuPageRoutingModule } from './menu-routing.module';
+import { MenuPage } from './components/menu/menu.page';
 import { MenuListComponent } from './components/menu-list/menu-list.component';
-import { CoreModule } from '../core/core.module';
 import { TextEllipsisPipeModule } from '../shared/pipes/text-ellipsis.pipe';
-import { BrowsePage } from './components/browse/browse.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BrowsePageRoutingModule,
-    CoreModule,
+    MenuPageRoutingModule,
     TextEllipsisPipeModule,
   ],
-  declarations: [BrowsePage, MenuListComponent],
+  declarations: [MenuPage, MenuListComponent],
 })
-export class BrowsePageModule {}
+export class MenuPageModule {}
