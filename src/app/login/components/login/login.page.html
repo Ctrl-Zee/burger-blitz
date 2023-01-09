@@ -7,6 +7,13 @@
         (login)="store.login($event)"
         [loginStatus]="vm.status"
       ></app-login-form>
+      <ion-button
+        fill="clear"
+        data-test="open-create-button"
+        (click)="store.setCreateModalOpen(true)"
+      >
+        Create Account
+      </ion-button>
       <ion-modal
         [isOpen]="vm.createModalIsOpen"
         [presentingElement]="routerOutlet.nativeEl"
@@ -19,13 +26,4 @@
       </ion-modal>
     </div>
   </ion-content>
-  <ion-footer>
-    <ion-button
-      expand="full"
-      data-test="open-create-button"
-      (click)="store.setCreateModalOpen(true)"
-    >
-      Create Account
-    </ion-button>
-  </ion-footer>
 </ng-container>
