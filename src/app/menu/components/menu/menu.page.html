@@ -1,11 +1,14 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Menu</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ng-container *ngIf="vm$ | async as vm">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
-  <ng-container *ngIf="vm$ | async as vm">
-    <app-menu-list [items]="vm.menuItems"></app-menu-list>
-  </ng-container>
-</ion-content>
+  <ion-content>
+    <app-menu-list
+      [items]="vm.menuItems"
+      (menuItemDetailEvent)="onMenuItemDetailClick($event)"
+    ></app-menu-list>
+  </ion-content>
+</ng-container>

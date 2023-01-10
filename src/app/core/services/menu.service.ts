@@ -3,9 +3,9 @@ import {
   collection,
   collectionData,
   Firestore,
-  limit,
-  orderBy,
   query,
+  doc,
+  docData,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { MenuItem } from 'src/app/shared/models/menu-item';
@@ -22,5 +22,11 @@ export class MenuService {
     return collectionData(menuCollection, {
       idField: 'id',
     }).pipe() as Observable<MenuItem[]>;
+  }
+
+  getItemById(docId: string): Observable<MenuItem> {
+    const docRef = doc(this.firestore, 'menu-items', docId);
+
+    return docData(docRef, { idField: 'id' }).pipe() as Observable<MenuItem>;
   }
 }

@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { switchMap } from 'rxjs';
+import { switchMap, tap } from 'rxjs';
 import { MenuService } from '../core/services/menu.service';
 import { MenuItem } from '../shared/models/menu-item';
 
 export interface MenuState {
   menu: MenuItem[];
+  selectedItem: MenuItem | null;
 }
 
 @Injectable()
 export class MenuStore extends ComponentStore<MenuState> {
   menuItems$ = this.select((state) => state.menu);
+
+  constructor(private menuService: MenuService) {
+    super({ menu: [], selectedItem: null });
+  }
 
   loadMenu = this.effect(($) =>
     $.pipe(
@@ -25,7 +30,8 @@ export class MenuStore extends ComponentStore<MenuState> {
     )
   );
 
-  constructor(private menuService: MenuService) {
-    super({ menu: [] });
+  setSelectedMenuItem(menuItem: MenuItem) {
+    console.log(menuItem);
+    this.patchState({ selectedItem: menuItem });
   }
 }

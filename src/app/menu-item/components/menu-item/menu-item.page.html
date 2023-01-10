@@ -1,0 +1,31 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{vm.menuItem?.name}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <div class="image-container">
+      <img [src]="vm.menuItem?.imageURL" alt="Burger" />
+    </div>
+    <div class="item-info-container">
+      <div class="name">{{vm.menuItem?.name}}</div>
+      <div class="price">{{vm.menuItem?.price | currency}}</div>
+      <div class="description">{{vm.menuItem?.description}}</div>
+    </div>
+
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Ingredients</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let ingredient of vm.menuItem?.ingredients">
+        <ion-checkbox slot="start" [checked]="true"></ion-checkbox>
+        <ion-label>{{ingredient}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ng-container>

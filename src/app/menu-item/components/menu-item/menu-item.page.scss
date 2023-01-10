@@ -1,0 +1,21 @@
+.item-info-container {
+  padding: 0 0.5rem;
+
+  .name {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .price {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .description {
+    font-size: 0.8rem;
+  }
+
+  div:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}

@@ -1,6 +1,6 @@
 <ion-list>
   <ion-item *ngFor="let item of items">
-    <div class="menu-item">
+    <div class="menu-item" (click)="viewMenuItemDetail(item)">
       <div class="info-container">
         <div class="title">{{ item.name }}</div>
         <div class="description">
