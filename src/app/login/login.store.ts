@@ -39,7 +39,7 @@ export class LoginStore extends ComponentStore<LoginState> {
           tapResponse(
             (user) => {
               this.patchState({ loginStatus: 'success' });
-              this.navCtrl.navigateRoot('/home/browse');
+              this.navCtrl.navigateRoot('/home/menu');
             },
             (error) => this.patchState({ loginStatus: 'error' })
           )
@@ -61,7 +61,7 @@ export class LoginStore extends ComponentStore<LoginState> {
             (user) => {
               this.patchState({ createStatus: 'success' });
               this.modalCtrl.dismiss();
-              this.navCtrl.navigateRoot('/home/browse');
+              this.navCtrl.navigateRoot('/home/menu');
             },
             (error) => this.patchState({ createStatus: 'error' })
           )
