@@ -48,10 +48,6 @@ export class LoginStore extends ComponentStore<LoginState> {
     )
   );
 
-  setCreateModalOpen(isOpen: boolean) {
-    this.patchState({ createModalIsOpen: isOpen });
-  }
-
   createAccount = this.effect((credential$: Observable<Credentials>) =>
     credential$.pipe(
       tap(() => this.patchState({ createStatus: 'creating' })),
@@ -69,4 +65,8 @@ export class LoginStore extends ComponentStore<LoginState> {
       )
     )
   );
+
+  setCreateModalOpen(isOpen: boolean) {
+    this.patchState({ createModalIsOpen: isOpen });
+  }
 }
