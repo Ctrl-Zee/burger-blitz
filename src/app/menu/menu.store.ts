@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { switchMap, tap } from 'rxjs';
+import { switchMap } from 'rxjs';
 import { MenuService } from '../core/services/menu.service';
 import { MenuItem } from '../shared/models/menu-item';
 
@@ -29,9 +29,4 @@ export class MenuStore extends ComponentStore<MenuState> {
       )
     )
   );
-
-  setSelectedMenuItem(menuItem: MenuItem) {
-    console.log(menuItem);
-    this.patchState({ selectedItem: menuItem });
-  }
 }
