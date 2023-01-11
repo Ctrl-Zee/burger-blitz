@@ -8,6 +8,7 @@ import { MenuPageRoutingModule } from './menu-routing.module';
 import { MenuPage } from './components/menu/menu.page';
 import { MenuListComponent } from './components/menu-list/menu-list.component';
 import { TextEllipsisPipeModule } from '../shared/pipes/text-ellipsis.pipe';
+import { CheckoutModule } from '../checkout/checkout.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { TextEllipsisPipeModule } from '../shared/pipes/text-ellipsis.pipe';
     IonicModule,
     MenuPageRoutingModule,
     TextEllipsisPipeModule,
+    CheckoutModule,
   ],
   declarations: [MenuPage, MenuListComponent],
 })

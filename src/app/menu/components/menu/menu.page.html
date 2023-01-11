@@ -13,22 +13,7 @@
 
     <ion-modal trigger="open-modal" [isOpen]="vm.bag.bagModalIsOpen">
       <ng-template>
-        <ion-header>
-          <ion-toolbar>
-            <ion-buttons slot="start">
-              <ion-button (click)="bagStore.setbagModalOpen(false)">
-                <ion-icon name="close-outline"></ion-icon>
-              </ion-button>
-            </ion-buttons>
-            <ion-title class="ion-text-center">Bag</ion-title>
-            <ion-buttons slot="end">
-              <ion-button>
-                <ion-icon name="trash-outline"></ion-icon>
-              </ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content class="ion-padding"> This is the bag </ion-content>
+        <app-modal-base></app-modal-base>
       </ng-template>
     </ion-modal>
   </ion-content>
