@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/home/menu']" routerDirection="back">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Bag</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ng-container *ngIf="vm$ | async as vm">
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of vm.items">
+        <ion-item>
+          <div class="image-container">
+            <img [src]="item.imageURL" alt="Burger" />
+          </div>
+          <ion-label>{{ item.name }}</ion-label>
+          {{item.price | currency}}
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteItem(item)">
+            <ion-icon slot="start" name="trash"></ion-icon>
+            Delete
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <div class="footer-button"></div>
+  </ion-footer>
+</ng-container>

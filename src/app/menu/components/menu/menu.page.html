@@ -10,15 +10,9 @@
       [items]="vm.menuItems"
       (menuItemDetailEvent)="onMenuItemDetailClick($event)"
     ></app-menu-list>
-
-    <ion-modal trigger="open-modal" [isOpen]="vm.bag.bagModalIsOpen">
-      <ng-template>
-        <app-modal-base></app-modal-base>
-      </ng-template>
-    </ion-modal>
   </ion-content>
   <ion-footer [ngClass]="vm.bag.numberOfItems > 0 ? '' : 'ion-hide'">
-    <div class="bag-button" (click)="bagStore.setbagModalOpen(true)">
+    <div class="bag-button" (click)="onViewBagClick()">
       <div class="bag-count">{{vm.bag.numberOfItems}}</div>
       <div class="text">View Bag</div>
       <div class="bag-price">{{vm.bag.totalPrice | currency}}</div>

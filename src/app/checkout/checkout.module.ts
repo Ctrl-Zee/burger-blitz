@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModalBaseComponent } from './components/modal-base/modal-base.component';
-import { BagComponent } from './components/bag/bag.component';
+import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
-import { CheckoutComponent } from './components/checkout/checkout.component';
+
+import { CheckoutPageRoutingModule } from './checkout-routing.module';
+import { CheckoutPage } from './components/checkout/checkout.page';
 
 @NgModule({
-  declarations: [ModalBaseComponent, BagComponent, CheckoutComponent],
-  imports: [CommonModule, IonicModule],
-  exports: [ModalBaseComponent, BagComponent, CheckoutComponent],
+  imports: [CommonModule, FormsModule, IonicModule, CheckoutPageRoutingModule],
+  declarations: [CheckoutPage],
 })
-export class CheckoutModule {}
+export class CheckoutPageModule {}

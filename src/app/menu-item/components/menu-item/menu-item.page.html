@@ -29,11 +29,10 @@
     </ion-list>
   </ion-content>
   <ion-footer>
-    <div class="button-container">
-      <ion-button (click)="addToBag(vm.menuItem)"
-        >Add To Bag • {{vm.menuItem?.price | currency}}</ion-button
-      >
-      <div></div>
+    <div class="footer-button">
+      <ion-button (click)="addToBag(vm.menuItem)">
+        Add To Bag • {{vm.menuItem?.price | currency}}
+      </ion-button>
     </div>
   </ion-footer>
 </ng-container>

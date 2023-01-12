@@ -43,7 +43,7 @@ export class MenuItemPage implements OnInit {
       //redirect to menu
       this.navController.navigateBack('/');
       //open modal - set prop on bag store
-      this.bagStore.setbagModalOpen(true);
+      // this.bagStore.setbagModalOpen(true);
     }
   }
 }

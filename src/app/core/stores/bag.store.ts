@@ -6,7 +6,6 @@ export interface BagState {
   items: MenuItem[];
   totalPrice: number;
   numberOfItems: number;
-  bagModalIsOpen: boolean;
 }
 
 @Injectable({
@@ -14,17 +13,15 @@ export interface BagState {
 })
 export class BagStore extends ComponentStore<BagState> {
   bag$ = this.select((state) => state);
-  bagModalIsOpen$ = this.select((state) => state.bagModalIsOpen);
-  // bagItems$ = this.select((state) => state.items);
-  // totalPrice$ = this.select((state) => state.totalPrice);
-  // numberOfItems$ = this.select((state) => state.numberOfItems);
+  bagItems$ = this.select((state) => state.items);
+  totalPrice$ = this.select((state) => state.totalPrice);
+  numberOfItems$ = this.select((state) => state.numberOfItems);
 
   constructor() {
     super({
       items: [],
       totalPrice: 0,
       numberOfItems: 0,
-      bagModalIsOpen: false,
     });
   }
 
@@ -58,9 +55,5 @@ export class BagStore extends ComponentStore<BagState> {
         accumulator + currentItem.price,
       0
     );
-  }
-
-  setbagModalOpen(isOpen: boolean) {
-    this.patchState({ bagModalIsOpen: isOpen });
   }
 }

@@ -33,4 +33,8 @@ export class MenuPage implements OnInit {
   onMenuItemDetailClick(menuItem: MenuItem): void {
     this.navController.navigateForward(`/menu-item/${menuItem.id}`);
   }
+
+  onViewBagClick(): void {
+    this.navController.navigateForward('bag');
+  }
 }
