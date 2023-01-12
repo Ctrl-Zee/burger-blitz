@@ -24,7 +24,7 @@
       </ion-list-header>
       <ion-item *ngFor="let ingredient of vm.menuItem?.ingredients">
         <ion-checkbox slot="start" [checked]="true"></ion-checkbox>
-        <ion-label>{{ingredient}}</ion-label>
+        <ion-label class="ion-text-start">{{ingredient}}</ion-label>
       </ion-item>
     </ion-list>
   </ion-content>

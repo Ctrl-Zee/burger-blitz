@@ -16,8 +16,9 @@
 <ion-content class="ion-padding">
   <ion-content class="ion-padding">
     <h1>Page One</h1>
-    <ion-nav-link router-direction="forward" [component]="navComponent">
-      <ion-button>Go to Page Two</ion-button>
-    </ion-nav-link>
+    <ion-button expand="full" color="secondary" (click)="navigateToCheckout()">
+      <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      Go to checkout
+    </ion-button>
   </ion-content>
 </ion-content>
