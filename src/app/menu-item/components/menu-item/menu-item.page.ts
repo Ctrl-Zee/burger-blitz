@@ -40,10 +40,7 @@ export class MenuItemPage implements OnInit {
   addToBag(item: MenuItem | null): void {
     if (item) {
       this.bagStore.addItemToBag(item);
-      //redirect to menu
       this.navController.navigateBack('/');
-      //open modal - set prop on bag store
-      // this.bagStore.setbagModalOpen(true);
     }
   }
 }

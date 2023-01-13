@@ -17,7 +17,7 @@ export class MenuStore extends ComponentStore<MenuState> {
     super({ menu: [], selectedItem: null });
   }
 
-  loadMenu = this.effect(($) =>
+  readonly loadMenu = this.effect(($) =>
     $.pipe(
       switchMap(() =>
         this.menuService.getMenu().pipe(

@@ -26,5 +26,7 @@ export class BagPage implements OnInit {
 
   ngOnInit() {}
 
-  deleteItem(item: MenuItem): void {}
+  deleteItem(item: MenuItem): void {
+    this.bagStore.removeItemFromBag(item);
+  }
 }

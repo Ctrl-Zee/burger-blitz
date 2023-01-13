@@ -16,7 +16,7 @@ export class MenuItemStore extends ComponentStore<MenuItemState> {
     super({ menuItem: null });
   }
 
-  loadMenuItem = this.effect(($id: Observable<string>) => {
+  readonly loadMenuItem = this.effect(($id: Observable<string>) => {
     return $id.pipe(
       switchMap((id) =>
         this.menuService.getItemById(id).pipe(

@@ -31,7 +31,7 @@ export class LoginStore extends ComponentStore<LoginState> {
     });
   }
 
-  login = this.effect((credentials$: Observable<Credentials>) =>
+  readonly login = this.effect((credentials$: Observable<Credentials>) =>
     credentials$.pipe(
       tap(() => this.patchState({ loginStatus: 'authenticating' })),
       switchMap((credentials) =>
@@ -48,7 +48,7 @@ export class LoginStore extends ComponentStore<LoginState> {
     )
   );
 
-  createAccount = this.effect((credential$: Observable<Credentials>) =>
+  readonly createAccount = this.effect((credential$: Observable<Credentials>) =>
     credential$.pipe(
       tap(() => this.patchState({ createStatus: 'creating' })),
       switchMap((credential) =>

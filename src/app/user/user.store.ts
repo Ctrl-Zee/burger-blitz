@@ -19,7 +19,7 @@ export class UserStore extends ComponentStore<any> {
     super({ logOutModalIsOpen: false });
   }
 
-  logout = this.effect(($) =>
+  readonly logout = this.effect(($) =>
     $.pipe(
       switchMap(() =>
         this.authService.logout().pipe(

@@ -6,4 +6,5 @@ export interface MenuItem {
   price: number;
   imageURL: string;
   ingredients: string[];
+  bagId?: string;
 }
