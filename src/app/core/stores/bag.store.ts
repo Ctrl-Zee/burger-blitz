@@ -56,6 +56,18 @@ export class BagStore extends ComponentStore<BagState> {
     });
   }
 
+  removeAllFromBag(): void {
+    this.setState((state) => {
+      this.storageService.updateBag([]);
+      return {
+        ...state,
+        items: [],
+        numberOfItems: 0,
+        totalPrice: 0,
+      };
+    });
+  }
+
   private calculateTotalPrice(items: MenuItem[]): number {
     return items.reduce(
       (accumulator: number, currentItem: MenuItem) =>
