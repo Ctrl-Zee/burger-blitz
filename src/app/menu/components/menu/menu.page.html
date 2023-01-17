@@ -15,7 +15,7 @@
     <div class="bag-button" (click)="onViewBagClick()">
       <div class="bag-count">{{vm.bag.numberOfItems}}</div>
       <div class="text">View Bag</div>
-      <div class="bag-price">{{vm.bag.totalPrice | currency}}</div>
+      <div class="bag-price">{{vm.bag.itemsPrice | currency}}</div>
     </div>
   </ion-footer>
 </ng-container>

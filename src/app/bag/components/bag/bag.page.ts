@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, IonNav } from '@ionic/angular';
 import { combineLatest, map } from 'rxjs';
 import { BagStore } from 'src/app/core/stores/bag.store';
 import { MenuItem } from 'src/app/shared/models/menu-item';
+import { CheckoutComponent } from '../checkout/checkout.component';
 
 @Component({
   selector: 'app-bag',
@@ -13,19 +14,22 @@ import { MenuItem } from 'src/app/shared/models/menu-item';
 export class BagPage implements OnInit {
   vm$ = combineLatest([
     this.bagStore.bagItems$,
-    this.bagStore.totalPrice$,
+    this.bagStore.itemsPrice$,
     this.bagStore.numberOfItems$,
   ]).pipe(
-    map(([items, totalPrice, numberOfItems]) => ({
+    map(([items, itemsPrice, numberOfItems]) => ({
       items,
-      totalPrice,
+      itemsPrice,
       numberOfItems,
     }))
   );
 
+  checkoutComponent = CheckoutComponent;
+
   constructor(
     protected bagStore: BagStore,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private nav: IonNav
   ) {}
 
   ngOnInit() {}
@@ -59,5 +63,9 @@ export class BagPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  goToCheckout() {
+    this.nav.push(this.checkoutComponent);
   }
 }

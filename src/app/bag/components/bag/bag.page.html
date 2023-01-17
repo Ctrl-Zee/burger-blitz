@@ -18,7 +18,7 @@
     <ion-list>
       <ion-item-sliding *ngFor="let item of vm.items">
         <ion-item>
-          <div class="image-container">
+          <div class="image-container-sm">
             <img [src]="item.imageURL" alt="Burger" />
           </div>
           <ion-label>{{ item.name }}</ion-label>
@@ -36,7 +36,9 @@
   <ion-footer>
     <ion-toolbar>
       <div class="footer-button">
-        <ion-button> Check Out </ion-button>
+        <ion-button (click)="goToCheckout()">
+          Check Out • {{vm.itemsPrice | currency}}
+        </ion-button>
       </div>
     </ion-toolbar>
   </ion-footer>

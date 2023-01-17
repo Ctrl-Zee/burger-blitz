@@ -1,10 +1,21 @@
 @use "../../../../assets/styles/buttons" as *;
 @use "../../../../assets/styles/images" as *;
 
+ion-content,
 ion-item {
   font-size: 0.8rem;
 }
 
 .image-container-sm {
   margin-right: 0.8rem;
+}
+
+.checkout-total {
+  padding: 2rem 1rem 1rem 1rem;
+}
+
+.line-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
