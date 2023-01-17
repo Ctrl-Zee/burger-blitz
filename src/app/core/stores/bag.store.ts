@@ -19,7 +19,7 @@ export interface BagState {
 export class BagStore extends ComponentStore<BagState> {
   bag$ = this.select((state) => state);
   bagItems$ = this.select((state) => state.items);
-  itemsPrice$ = this.select((state) => state.totalPrice);
+  itemsPrice$ = this.select((state) => state.itemsPrice);
   totalPrice$ = this.select((state) => state.totalPrice);
   numberOfItems$ = this.select((state) => state.numberOfItems);
 

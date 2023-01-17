@@ -34,7 +34,7 @@
         <span>Tip</span>
         <span>{{ bag.tip | currency }}</span>
       </div>
-      <div class="line-item">
+      <div class="line-item total">
         <span>Total Price</span>
         <span>{{ bag.totalPrice | currency }}</span>
       </div>
@@ -43,7 +43,7 @@
   <ion-footer>
     <ion-toolbar>
       <div class="footer-button">
-        <ion-button>
+        <ion-button (click)="checkout()">
           <ion-icon slot="start" name="card-outline"></ion-icon>
           Pay Now
         </ion-button>
