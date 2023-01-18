@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Order History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ng-container *ngIf="orders$ | async as orders">
+  <ion-content class="ion-padding-start">
+    <ion-list>
+      <ion-item
+        *ngFor="let order of orders"
+        button
+        detail="true"
+        lines="full"
+        (click)="goToOrderDetail(order)"
+      >
+        <ion-icon
+          slot="start"
+          name="checkmark-circle-outline"
+          color="success"
+        ></ion-icon>
+        <ion-label>
+          <h3>Order # {{order.id}}</h3>
+          <h4>{{order.orderDate | date:'medium'}}</h4>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ng-container>

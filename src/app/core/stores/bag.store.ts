@@ -9,6 +9,7 @@ export interface BagState {
   itemsPrice: number;
   totalPrice: number;
   numberOfItems: number;
+  stateTax: number;
   tax: number;
   tip: number;
 }
@@ -29,7 +30,8 @@ export class BagStore extends ComponentStore<BagState> {
       totalPrice: 0,
       itemsPrice: 0,
       numberOfItems: 0,
-      tax: 0.07,
+      stateTax: 0.07,
+      tax: 0,
       tip: 4,
     });
   }
@@ -62,7 +64,7 @@ export class BagStore extends ComponentStore<BagState> {
 
   private setBagState(state: BagState, items: MenuItem[]): BagState {
     const itemsPrice = this.calculateItemsPrice(items);
-    const tax = this.calculateTax(itemsPrice, state.tax);
+    const tax = this.calculateTax(itemsPrice, state.stateTax);
     return {
       ...state,
       items: items,
@@ -83,7 +85,6 @@ export class BagStore extends ComponentStore<BagState> {
 
   private calculateTax(totalPrice: number, tax: number): number {
     const value = (totalPrice * tax).toFixed(2);
-    console.log(value);
     return Number(value);
   }
 

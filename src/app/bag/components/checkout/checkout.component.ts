@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { IonNav, NavController } from '@ionic/angular';
-import { BagStore } from 'src/app/core/stores/bag.store';
+import { OrderHistoryService } from 'src/app/core/services/order-history.service';
+import { BagState, BagStore } from 'src/app/core/stores/bag.store';
+import { Order } from 'src/app/shared/models/order';
 
 @Component({
   selector: 'app-checkout',
@@ -14,7 +16,8 @@ export class CheckoutComponent implements OnInit {
   constructor(
     private nav: IonNav,
     private navCtrl: NavController,
-    private bagStore: BagStore
+    private bagStore: BagStore,
+    private orderHistory: OrderHistoryService
   ) {}
 
   ngOnInit() {}
@@ -24,7 +27,17 @@ export class CheckoutComponent implements OnInit {
     this.nav.pop();
   }
 
-  checkout(): void {
+  checkout(bag: BagState): void {
+    const order: Order = {
+      id: Date.now().toString(),
+      items: bag.items,
+      itemsPrice: bag.itemsPrice,
+      totalPrice: bag.totalPrice,
+      tax: bag.tax,
+      tip: bag.tip,
+      orderDate: new Date(),
+    };
+    this.orderHistory.saveOrderHistory(order);
     this.navCtrl.navigateRoot('/home/menu');
     this.bagStore.removeAllFromBag();
   }

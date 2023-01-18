@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { HistoryPage } from './history.page';
+import { HistoryBaseComponent } from './components/history-base/history-base.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HistoryPage
-  }
+    component: HistoryBaseComponent,
+  },
 ];
 
 @NgModule({

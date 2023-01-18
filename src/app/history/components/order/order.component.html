@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigateBack()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+        Back
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Checkout</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of order?.items">
+      <div class="image-container-sm">
+        <img [src]="item.imageURL" alt="Burger" />
+      </div>
+      <ion-label>{{ item.name }}</ion-label>
+      {{ item.price | currency }}
+    </ion-item>
+  </ion-list>
+  <div class="checkout-total ion-padding">
+    <div class="line-item">
+      <span>Subtotal</span>
+      <span>{{ order.itemsPrice | currency }}</span>
+    </div>
+    <div class="line-item">
+      <span>Tax</span>
+      <span>{{ order.tax | currency }}</span>
+    </div>
+    <div class="line-item">
+      <span>Tip</span>
+      <span>{{ order.tip | currency }}</span>
+    </div>
+    <div class="line-item total">
+      <span>Total Price</span>
+      <span>{{ order.totalPrice | currency }}</span>
+    </div>
+  </div>
+</ion-content>
